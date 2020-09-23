@@ -1,0 +1,32 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+input[type='text'] {
+  background-color: #bbb;
+  border: none;
+  border-radius: 100px;
+  color: #696969;
+  font-size: 18px;
+  padding: 4px;
+  text-align: center;
+}
+
+#siteTitle {
+  color: blue;
+  font-family: sans-serif;
+}
+
+#canvas {
+  position: relative;
+  width: 400px;
+}

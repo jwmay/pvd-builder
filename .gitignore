@@ -1,0 +1,9 @@
+# folders
+dist/
+node_modules/
+
+# screenflow
+screenflow/
+
+# system files
+.DS_Store

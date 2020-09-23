@@ -1,0 +1,12 @@
+/**
+ * alert.css
+ */
+.alert {
+  background-color: rgba(54, 167, 54, 0.7);
+  border-radius: 8px;
+  color: white;
+  display: none;
+  font-family: sans-serif;
+  margin-top: 12px;
+  padding: 14px;
+}
