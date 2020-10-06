@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PVD Builder</title>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/5efa8ac651.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <h1 id="siteTitle">Particle View Diagram (PVD) Builder</h1>
+    <div id="canvas"></div>
+    <div class="btn-bar">
+      <button class="btn btn-primary" id="copyImageButton">
+        Copy PVD to clipboard
+      </button>
+      <button class="btn" id="reset" onclick="location.reload()">Reset</button>
+      <div class="btn-icon" id="helpButton">
+        <i class="far fa-question-circle fa-2x"></i>
+      </div>
+    </div>
+    <div class="alert" id="alert">
+      This PVD has been copied to the clipboard
+    </div>
+    <div class="help" id="helpContent" style="display: none">
+      <video controls width="400">
+        <source
+          src="https://rawcdn.githack.com/jwmay/bohr-model-builder/5ea8eb8028a4669a7e7008ab9f201dd5a87bfe71/assets/img/how-to-video.mp4"
+          type="video/mp4"
+        />
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+    </div>
+
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>

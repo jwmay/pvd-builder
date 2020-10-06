@@ -1,0 +1,96 @@
+/**
+ * alert.css
+ */
+.alert {
+  background-color: rgba(54, 167, 54, 0.7);
+  border-radius: 8px;
+  color: white;
+  display: none;
+  font-family: sans-serif;
+  margin-top: 12px;
+  padding: 14px;
+}
+
+/**
+ * buttons.css
+ */
+.btn-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  width: 400px;
+}
+
+.btn {
+  background-color: #a1a1a1;
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  color: white;
+  cursor: pointer;
+  padding: 16px 24px;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #696969;
+}
+
+.btn-primary {
+  background-color: blue;
+}
+
+.btn-primary:hover {
+  background-color: darkblue;
+}
+
+.btn-icon {
+  color: green;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  opacity: 0.7;
+}
+
+/**
+ * help.css
+ */
+.help {
+  margin-top: 24px;
+  width: 400px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #eee;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+input[type='text'] {
+  background-color: #bbb;
+  border: none;
+  border-radius: 100px;
+  color: #696969;
+  font-size: 18px;
+  padding: 4px;
+  text-align: center;
+}
+
+#siteTitle {
+  color: blue;
+  font-family: sans-serif;
+}
+
+#canvas {
+  position: relative;
+  width: 605px;
+}
