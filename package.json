@@ -1,7 +1,7 @@
 {
-  "name": "build-a-bohr-model",
+  "name": "pvd-builder",
   "version": "0.1.0",
-  "description": "Create Bohr models with a simple drag-and-drop creater.",
+  "description": "Create particle view diagrams (PVDs) with a simple drag-and-drop creater.",
   "main": "index.js",
   "scripts": {
     "start": "gulp",

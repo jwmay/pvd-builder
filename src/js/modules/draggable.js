@@ -74,7 +74,12 @@ export class Draggable {
     }
     this.p.ellipse(this.x, this.y, this.w, this.h)
 
-    this.label && this.p.fill(255).textSize(16).text(this.label, this.x, this.y)
+    this.label &&
+      this.p
+        .fill(255)
+        .textAlign(this.p.CENTER, this.p.CENTER)
+        .textSize(16)
+        .text(this.label, this.x, this.y)
   }
 
   _isOver() {

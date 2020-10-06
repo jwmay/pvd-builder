@@ -7,3 +7,6 @@ screenflow/
 
 # system files
 .DS_Store
+
+# VS Code files
+*.code-workspace
