@@ -62,6 +62,18 @@
   width: 400px;
 }
 
+/**
+ * info.css
+ */
+.info {
+  border: 2px solid crimson;
+  border-radius: 8px;
+  color: crimson;
+  font-family: sans-serif;
+  margin-top: 12px;
+  padding: 10px 30px;
+}
+
 html,
 body {
   margin: 0;
