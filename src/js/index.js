@@ -1,8 +1,3 @@
-// @todo: add checkbox for sea of electrons
-// @todo: SOE changes background to gray?
-// @todo: add a resizable box?
-// @todo: add label for number of electrons in the sea
-
 import p5 from 'p5'
 import { copyImage } from './modules/actions'
 import { Alert } from './modules/alert'
@@ -19,6 +14,9 @@ help.listen()
 let showSliderText = true
 document.addEventListener('copied', () => (showSliderText = true))
 
+// Control display of slider for setting sea of electrons
+let hasSOE = false
+
 // Handle alert
 const alert = new Alert()
 alert.listen()
@@ -34,9 +32,10 @@ document
 // Create the canvas
 new p5((p) => {
   let inputs = { small: {}, medium: {}, large: {} }
-  let sliders = { small: {}, medium: {}, large: {} }
+  let sliders = { small: {}, medium: {}, large: {}, soe: {} }
+  let seoCheckbox = {}
   let atoms = { small: [], medium: [], large: [] }
-  const max = { small: 16, medium: 10, large: 8 }
+  const max = { small: 16, medium: 10, large: 8, soe: 30 }
 
   const inputSize = 60
   const inputMargin = 15
@@ -48,6 +47,8 @@ new p5((p) => {
     margin: 10,
     start: 10,
     textBottom: 379,
+    textTop: 8,
+    top: 6,
   }
 
   p.setup = function () {
@@ -76,6 +77,12 @@ new p5((p) => {
         sliderPosn.bottom
       )
       .size(sliderSize)
+    sliders.soe = p
+      .createSlider(0, max.soe, 0)
+      .parent(parentId)
+      .position(160, sliderPosn.top)
+      .size(sliderSize)
+      .hide()
 
     // handle input changes
     const onInput = {
@@ -119,6 +126,13 @@ new p5((p) => {
       .size(inputSize)
       .input(onInput.large)
 
+    // sea of electrons
+    seoCheckbox = p
+      .createCheckbox('sea of electrons', false)
+      .parent(parentId)
+      .position(sliderPosn.start, sliderPosn.top)
+      .changed(setSOE)
+
     // atoms
     atoms.small = getAtoms(p, 'small', inputs.small.value())
     atoms.medium = getAtoms(p, 'medium', inputs.small.value())
@@ -126,14 +140,16 @@ new p5((p) => {
   }
 
   p.draw = function () {
-    // white background
-    p.background(255)
+    // background color dependent on sea of electrons
+    let backgroundColor = hasSOE ? 225 : 255
+    p.background(backgroundColor)
 
     // sliders
-    const atomQty = {
+    let atomQty = {
       small: sliders.small.value(),
       medium: sliders.medium.value(),
       large: sliders.large.value(),
+      soe: sliders.soe.value(),
     }
     showSliderText &&
       p
@@ -158,6 +174,20 @@ new p5((p) => {
           sliderPosn.textBottom
         )
 
+    // show sea of electrons slider and text only if checkbox selected
+    if (hasSOE) {
+      sliders.soe.show()
+      showSliderText &&
+        p.text(
+          `${atomQty.soe} electron${atomQty.soe !== 1 ? 's' : ''} in the sea`,
+          sliders.soe.x + sliders.soe.width + sliderPosn.margin,
+          sliderPosn.textTop
+        )
+      p.fill(255).textSize(60).text(`${atomQty.soe} e-`, 450, 30)
+    } else {
+      sliders.soe.hide()
+    }
+
     // atoms
     atoms.small.forEach((atom, index) => index < atomQty.small && atom.create())
     atoms.medium.forEach(
@@ -180,9 +210,9 @@ new p5((p) => {
 
   const getAtoms = function (p, size, label) {
     const posn = {
-      small: { gap: 35, left: 20, top: 20 },
-      medium: { gap: 55, left: 30, top: 65 },
-      large: { gap: 75, left: 40, top: 130 },
+      small: { gap: 35, left: 20, top: 45 },
+      medium: { gap: 55, left: 30, top: 90 },
+      large: { gap: 75, left: 40, top: 155 },
     }
     const atoms = []
 
@@ -209,6 +239,14 @@ new p5((p) => {
         return new AtomMedium(p, x, y, label)
       case 'large':
         return new AtomLarge(p, x, y, label)
+    }
+  }
+
+  const setSOE = function () {
+    if (this.checked()) {
+      hasSOE = true
+    } else {
+      hasSOE = false
     }
   }
 })
