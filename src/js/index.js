@@ -141,7 +141,7 @@ new p5((p) => {
 
   p.draw = function () {
     // background color dependent on sea of electrons
-    let backgroundColor = hasSOE ? 225 : 255
+    let backgroundColor = hasSOE ? 200 : 255
     p.background(backgroundColor)
 
     // sliders
@@ -183,7 +183,10 @@ new p5((p) => {
           sliders.soe.x + sliders.soe.width + sliderPosn.margin,
           sliderPosn.textTop
         )
-      p.fill(255).textSize(60).text(`${atomQty.soe} e-`, 450, 30)
+      p.fill(255)
+        .textAlign(p.LEFT, p.TOP)
+        .textSize(80)
+        .text(`${atomQty.soe} e-`, 400, 30)
     } else {
       sliders.soe.hide()
     }
